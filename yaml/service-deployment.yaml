@@ -1,0 +1,53 @@
+apiVersion: v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Service
+metadata:
+  name: landing-page
+  labels:
+    app: landing-page
+spec:
+  selector:
+    app: landing-page
+    tier: frontend
+  ports:
+  - port: 80
+  type: LoadBalancer
+---
+apiVersion: v1 
+kind: PersistentVolumeClaim
+metadata:
+  name: landing-page
+  labels:
+    app: landing-page
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: apps/v1beta2 
+kind: Deployment
+metadata:
+  name: landing-page
+  labels:
+    app: landing-page
+spec:
+  selector:
+    matchLabels:
+      app: landing-page
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: landing-page
+        tier: frontend
+    spec:
+      containers:
+      - image : happyduck/landing-page:latest
+        name: landing-page
+        ports:
+        - containerPort: 80
+          name: landing-page
+

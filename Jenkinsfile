@@ -8,13 +8,13 @@ pipeline {
         steps {
             script {
                 if (env.BRANCH_NAME == 'development') {                     
-            sh 'docker build -t happyduck/landing-multibranch:0.0.$BUILD_NUMBER-dev .'
+            sh 'docker build -t 637631085186.dkr.ecr.ap-southeast-1.amazonaws.com/landing:0.0.$BUILD_NUMBER-dev .'
                 }
                 else if (env.BRANCH_NAME == 'staging') {
-            sh 'docker build -t happyduck/landing-multibranch:0.0.$BUILD_NUMBER-staging .'
+            sh 'docker build -t 637631085186.dkr.ecr.ap-southeast-1.amazonaws.com/landing:0.0.$BUILD_NUMBER-staging .'
                 }
                 else if (env.BRANCH_NAME == 'production') {
-            sh 'docker build -t happyduck/landing-multibranch:0.0.$BUILD_NUMBER-prod .'   
+            sh 'docker build -t 637631085186.dkr.ecr.ap-southeast-1.amazonaws.com/landing:0.0.$BUILD_NUMBER-prod .'   
                }
                 else {
                     sh 'echo Nothing to Build'
@@ -26,13 +26,13 @@ pipeline {
         steps {
             script {
              if (env.BRANCH_NAME == 'development') {
-            sh 'docker push happyduck/landing-multibranch:0.0.$BUILD_NUMBER-dev'
+            sh 'docker push 637631085186.dkr.ecr.ap-southeast-1.amazonaws.com/landing:0.0.$BUILD_NUMBER-dev'
                 }
                 else if (env.BRANCH_NAME == 'staging') {
-            sh 'docker push happyduck/landing-multibranch:0.0.$BUILD_NUMBER-staging' 
+            sh 'docker push 637631085186.dkr.ecr.ap-southeast-1.amazonaws.com/landing:0.0.$BUILD_NUMBER-staging' 
                 }
                 else if (env.BRANCH_NAME == 'production') {
-            sh 'docker push happyduck/landing-multibranch:0.0.$BUILD_NUMBER-prod'
+            sh 'docker push 637631085186.dkr.ecr.ap-southeast-1.amazonaws.com/landing:0.0.$BUILD_NUMBER-prod'
                }
                 else {
                     sh 'echo Nothing to Build'

@@ -1,5 +1,5 @@
 # build and deploy in specifics namespace in k8
-## Staging
+## Staging 
 ```
 kubectl create -f yaml/service-deployment.yaml -n staging
 kubectl apply -f yaml/service-deployment.yaml -n staging

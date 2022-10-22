@@ -42,7 +42,7 @@ pipeline {
       }
     } 
 }
-        post {
+/*        post {
             success {
                 slackSend channel: '#jenkins',
                 color: 'good',
@@ -56,6 +56,7 @@ pipeline {
                 }
 
         }
+*/
 }
 
 
